@@ -9,13 +9,15 @@ class PagesController extends Controller
     public function index()
     {
         return view('home', [
-            "title" => "Home"
+            "title" => "Home",
+            "active" => 'home'
         ]);
     }
     public function about()
     {
         return view('about', [
             "title" => "About",
+            "active" => 'about',
             "name" => "Achmad Rifki",
             "email" => "eririfky29@gmail.com",
         ]);
