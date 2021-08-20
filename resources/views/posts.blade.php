@@ -1,7 +1,18 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1 class="mb-5">{{ $title }}</h1>
+    <h1 class="mb-5">{{ $title }}</h1> 
+    
+    <div class="row justify-content-end">
+        <div class="col-md-5">
+            <form action="/posts">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}"> 
+                    <button class="btn btn-outline-secondary" type="submit" >Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     @if ($posts->count())
         <div class="card mb-3">
