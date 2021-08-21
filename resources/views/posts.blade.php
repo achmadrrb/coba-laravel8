@@ -20,6 +20,10 @@
         </div>
     </div>
 
+    <div class="d-flex justify-content-end">
+        {{ $posts->links() }}
+    </div>
+
     @if ($posts->count())
         <div class="card mb-3">
             <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
@@ -62,6 +66,10 @@
     @else
         <p class="text-center fs-4">No post available.</p>
     @endif 
+
+    <div class="d-flex justify-content-end">
+        {{ $posts->links() }}
+    </div>
     
 @endsection
 
