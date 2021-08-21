@@ -34,11 +34,3 @@ Route::get('/categories', function () {
         'categories' => Category::all(),
     ]);
 });
-
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('posts', [
-        'title' => "Posts Sorted by: $category->name",
-        'active' => 'categories',
-        'posts' => $category->posts,
-    ]);
-});
