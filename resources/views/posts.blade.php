@@ -6,6 +6,7 @@
     <div class="row justify-content-end">
         <div class="col-md-5">
             <form action="/posts">
+                <input type="hidden" name="category" value="{{ request('category') }}">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}"> 
                     <button class="btn btn-outline-secondary" type="submit" >Search</button>
@@ -21,7 +22,7 @@
             <h2 class="card-title">{{ $posts[0]->title }}</h2>
             <p>
                 <small class="text-muted">
-                    By. <a href="/author/{{ $posts[0]->author->username }}" class="text-decoration-none">{{ $posts[0]->author->name }}</a> in <a href="/categories/{{  $posts[0]->category->slug }}" class="text-decoration-none">{{ $posts[0]->category->name }} </a> Last updated {{ $posts[0]->created_at->diffForHumans() }}
+                    By. <a href="/author/{{ $posts[0]->author->username }}" class="text-decoration-none">{{ $posts[0]->author->name }}</a> in <a href="/posts?category={{  $posts[0]->category->slug }}" class="text-decoration-none">{{ $posts[0]->category->name }} </a> Last updated {{ $posts[0]->created_at->diffForHumans() }}
                 </small>
             </p>
             <p class="card-text">{{ $posts[0]->excerpt }}</p>
@@ -34,13 +35,13 @@
             @foreach ($posts->skip(1) as $post)
             <div class="col-md-4">
                 <div class="card">
-                    <div class="position-absolute bg-dark px-3 py-2"><a href="/categories/{{  $post->category->slug }}" class="text-decoration-none text-white">{{  $post->category->name  }}</a></div>
+                    <div class="position-absolute bg-dark px-3 py-2"><a href="posts?category={{  $post->category->slug }}" class="text-decoration-none text-white">{{  $post->category->name  }}</a></div>
                     <img src="https://source.unsplash.com/400x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
                     <div class="card-body">
                       <h5 class="card-title">{{ $post->title }}</h5>
                       <p>
                         <small class="text-muted">
-                            By. <a href="/author/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/categories/{{  $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }} </a> Last updated {{ $post->created_at->diffForHumans() }}
+                            By. <a href="/author/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/posts?category={{  $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }} </a> Last updated {{ $post->created_at->diffForHumans() }}
                         </small>
                     </p>
                       <p class="card-text">{{ $post->excerpt }}</p>
